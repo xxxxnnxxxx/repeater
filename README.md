@@ -13,7 +13,7 @@ wireshark支持lua插件，我们要开发lua插件和lua扩展，我们就要�
 
 如下图，我们打开wireshark程序，然后 `[帮助]`中`[关于wireshark]`。
 
-![](./Wireshark%20lua版本.png)
+![image](https://github.com/xxxxnnxxxx/repeater/tree/main/images/Wireshark%20lua版本.png)
 
 图中显示wireshark使用的版本是: `Lua 5.2.4`, 那我们要开发扩展，就要下载相关的版本。
 
@@ -23,7 +23,7 @@ wireshark支持lua插件，我们要开发lua插件和lua扩展，我们就要�
 
 官方网址：https://www.lua.org/versions.html#5.2
 
-![](./lua5.2.4官方.png)
+![image](https://github.com/xxxxnnxxxx/repeater/tree/main/images/lua5.2.4官方.png)
 
 Lua5.2.4源码下载地址：https://www.lua.org/ftp/lua-5.2.4.tar.gz
 
@@ -31,11 +31,11 @@ Lua5.2.4源码下载地址：https://www.lua.org/ftp/lua-5.2.4.tar.gz
 
 我们创建 `lua52` 的动态库工程，然后导入下载的 `lua5.2.4` 的源代码, 但要排除 `lua.c` 和 `luac.c` 因为这个是命令行相关的文件。然后在编译的时候定义 `LUA_BUILD_AS_DLL` 来生成动态库，如下图：
 
-![](./lua源码1.png)
+![image](https://github.com/xxxxnnxxxx/repeater/tree/main/images/lua源码1.png)
 
 我们创建的工程如下图：
 
-![](./lua%20dll.png)
+![image](https://github.com/xxxxnnxxxx/repeater/tree/main/images/lua%20dll.png)
 
 ## 3. npcap开发包
 
@@ -45,11 +45,11 @@ npcap 官方网址：https://npcap.com/
 
 如下图， 下载两个包：
 
-![](./npcapsdk.png)
+![image](https://github.com/xxxxnnxxxx/repeater/tree/main/images/npcapsdk.png)
 
 注意，我们需要再次安装一下npcap, 因为需要一些附加的dll, 如`wpcap.dll`, 我在开发工程中，发现这个总是找不到，如下图：(Npcap 1.78 installer)
 
-![](./npcapinstaller.png)
+![image](https://github.com/xxxxnnxxxx/repeater/tree/main/images/npcapinstaller.png)
 
 选中图中的两个选项。
 
@@ -68,7 +68,7 @@ lua扩展库要符合以下几点：
 
 3. 在导出函数中，注册使用的函数列表，如下：
 
-    ![](./repeatproject1.png)
+    ![image](https://github.com/xxxxnnxxxx/repeater/tree/main/images/repeatproject1.png)
 
 4. 导出函数和注册的调用函数都使用参数 `lua_State *` 作为参数， 代码如下：
 
@@ -125,13 +125,13 @@ lua扩展库要符合以下几点：
 
 因为我们要使用npcap库发送数据包，那么我就要引入npcap sdk, 在这个工程中，我直接放在解决方案的同样的目录中，如下图：
 
-![](./npcaplib1.png)
-![](./npcaplib2.png)
-![](./npcaplib3.png)
+![image](https://github.com/xxxxnnxxxx/repeater/tree/main/images/npcaplib1.png)
+![image](https://github.com/xxxxnnxxxx/repeater/tree/main/images/npcaplib2.png)
+![image](https://github.com/xxxxnnxxxx/repeater/tree/main/images/npcaplib3.png)
 
 在我们的工程中引入包含目录：
 
-![](./npcaplib4.png)
+![image](https://github.com/xxxxnnxxxx/repeater/tree/main/images/npcaplib4.png)
 
 ## 3. 引入库
 
@@ -378,11 +378,11 @@ end
 
 插件分为两个部分， 一个是扩展库，一个是lua脚本，扩展库可以直接放入到wireshark程序所在目录就可以， 然后在 lua 脚本中 `local repeater = require("repeater")` 引用就可以了。那么lua脚本放在什么地方呢？我们可以在wireshark的帮助菜单的关于wireshark中找到，如下图： 
 
-![](./luapluginpos.png)
+![image](https://github.com/xxxxnnxxxx/repeater/tree/main/images/luapluginpos.png)
 
 扩展库的位置：
 
-![](./lualibpos.png)
+![image](https://github.com/xxxxnnxxxx/repeater/tree/main/images/lualibpos.png)
 
 注意：脚本插件的文件名称不能和扩展动态库的名称相同，要不引用的时候造成错误。
 
@@ -391,9 +391,9 @@ end
 
 所有的工作都完成了，运行效果如下图：
 
-![](./run1.png)
+![image](https://github.com/xxxxnnxxxx/repeater/tree/main/images/run1.png)
 
-![](./run2.png)
+![image](https://github.com/xxxxnnxxxx/repeater/tree/main/images/run2.png)
 
 # 六、参考
 
